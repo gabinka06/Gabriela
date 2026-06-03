@@ -1,0 +1,511 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generation zef - Букети и Цветя</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="#products">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Преглед на продукти..." oninput="filterProducts()">
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-count">0</span>
+                🛒
+            </a>
+        </header>
+
+        <div id="auth-modal" class="cart-modal">
+            <div class="cart-content">
+                <div class="cart-header">
+                    <h3 id="auth-title">Вход</h3>
+                    <span class="close-cart" onclick="toggleAuth()">&times;</span>
+                </div>
+                <div id="auth-forms">
+                    <div id="login-form">
+                        <input type="text" id="login-username" placeholder="Потребител">
+                        <input type="password" id="login-password" placeholder="Парола">
+                        <button class="cta-button" onclick="loginUser()">Вход</button>
+                    </div>
+                    <div id="register-form" style="display:none;">
+                        <input type="text" id="reg-username" placeholder="Потребител">
+                        <input type="password" id="reg-password" placeholder="Парола">
+                        <button class="cta-button" onclick="registerUser()">Регистрация</button>
+                    </div>
+                    <p><a href="#" onclick="showRegister();return false;">Нямаш акаунт? Регистрирай се</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <a href="#" class="active">All</a>
+            <a href="#seasonal">Seasonal</a>
+            <a href="#gift-boxes">Gift Boxes</a>
+            <a href="#flower-bouquets">Flower Bouquets</a>
+            <a href="#best-sellers">Best Sellers</a>
+            <a href="low-sugar-zefir.html">Low Sugar Zefir</a>
+        </div>
+        <section id="products" class="products">
+            <h2>Нашите Букети</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="1" data-name="Лале-О-Палуза" data-price="29.99">
+                    <div class="image-placeholder"><img src="779f82d114b7995d4818de3931dbb970.jpg" border="0" width="400" height="250" alt="Букет от лалета"></div>
+                    <h3>Лале-О-Палуза</h3>
+                    <p>Слънчево настроение в розово и жълто! ☀️ Тези зефирени лалета носят усмивки и усещане за празник. Подарете емоция, която е едновременно красива и невероятно вкусна.</p>
+                    <div class="product-price">29.99 лв</div>
+                    <a href="product1.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="2" data-name="Златно лято" data-price="39.99">
+                    <div class="image-placeholder"><img src="Screenshot 2026-03-12 110613.png" border="0" width="400" height="250" alt="Букет в кутия"></div>
+                    <h3>Златно лято</h3>
+                    <p>Парче слънце в кутия! 🌻 Тази разкошна композиция обединява оптимизма на слънчогледите с нежността на розите и божурите. Всеки детайл е шприцован от домашен зефир с натурален плодов сок.</p>
+                    <div class="flavour-group">
+                      <label>Flavour 1:
+                        <select class="flavour1">
+                          <option>Mango</option><option>Strawberry</option><option>Apple</option><option>Blueberry</option><option>Lemon</option>
+                        </select>
+                      </label>
+                      <label>Flavour 2:
+                        <select class="flavour2">
+                          <option>Mango</option><option>Strawberry</option><option>Apple</option><option>Blueberry</option><option>Lemon</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="product-price">39.99 лв</div>
+                    <a href="product2.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="3" data-name="Цветен етикет" data-price="49.99">
+                    <div class="image-placeholder"><img src="9f3038a6b854cff8f739bae8bef6192d.jpg" border="0" width="400" height="250" alt="Букет от рози"></div>
+                    <h3>Цветен етикет</h3>
+                    <p>🌹 Кутия с 5 ръчно изработени зефирени рози. Перфектният сладък комплимент – съчетание от изящна визия и нежен плодов вкус. Красота, която се яде! ✨</p>
+                    <div class="flavour-group">
+                      <label>Flavour 1:
+                        <select class="flavour1">
+                          <option>Mango</option><option>Strawberry</option><option>Apple</option><option>Blueberry</option><option>Lemon</option>
+                        </select>
+                      </label>
+                      <label>Flavour 2:
+                        <select class="flavour2">
+                          <option>Mango</option><option>Strawberry</option><option>Apple</option><option>Blueberry</option><option>Lemon</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="product-price">49.99 лв</div>
+                    <a href="product3.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="4" data-name="Сладко признание" data-price="35.99">
+                    <div class="image-placeholder"><img src="05cb4018a31e094dfa54ffbb881f3f42.jpg" border="0" width="400" height="250" alt="Букет Класик"></div>
+                    <h3>Сладко признание</h3>
+                    <p>Любов, която се топи в устата. 🌸 Тази кутия във формата на сърце крие най-деликатните зефирени рози – перфектният начин да кажеш „Обичам те" с вкус на горски плодове и нежност.</p>
+                    <div class="product-price">35.99 лв</div>
+                    <a href="product4.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="5" data-name="Букет Весела" data-price="44.99">
+                    <div class="image-placeholder"><img src="0779d3d2d8e85037a565cb2a5d8c0788.jpg" border="0" width="400" height="250" alt="Букет Весела"></div>
+                    <h3>Букет Весела</h3>
+                    <p>Изобилие от детайли и вкус. ✨ Всеки листенце е ръчно шприцовано, за да създадем този разкошен букет. Малко сладост, много стил и нула изкуствени консерванти.</p>
+                    <div class="product-price">44.99 лв</div>
+                    <a href="product5.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="6" data-name="Нежен шепот" data-price="59.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true,m.webp" border="0" width="400" height="250" alt="Букет Луксозен"></div>
+                    <h3>Нежен шепот</h3>
+                    <p>Кошница, пълна с чудеса! 🧺 Комбинирахме дълбоко синьо с нежна праскова за един по-нестандартен и артистичен подарък. Зефиреното изкуство, което ще превърне всеки повод в специален момент.</p>
+                    <div class="product-price">59.99 лв</div>
+                    <a href="product6.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="7" data-name="Пурпурна елегантност" data-price="64.99">
+                    <div class="image-placeholder"><img src="Screenshot 2026-03-12 112147.png" border="0" width="400" height="250" alt="Букет Премиум"></div>
+                    <h3>Пурпурна елегантност</h3>
+                    <p>Вечна пролет в ръцете Ви! 💐 Класическата елегантност на лалетата, пресъздадена в най-деликатния зефир. Плътната комбинация от дълбоки червени и маув тонове не изисква ваза – само желание да бъде споделена.</p>
+                    <div class="product-price">64.99 лв</div>
+                    <a href="product7.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="8" data-name="Лазурна мечта" data-price="54.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true,m (2).webp" border="0" width="400" height="250" alt="Букет Зефир"></div>
+                    <h3>Лазурна мечта</h3>
+                    <p>Зефирена магия в кръг. ✨ Този цветен венец е доказателство, че десертите могат да бъдат истинско изкуство. Изискан завършек на Вашия празник или незабравим подарък за ценители.</p>
+                    <div class="product-price">54.99 лв</div>
+                    <a href="product8.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="9" data-name="Слънчев лъч" data-price="49.99">
+                    <div class="image-placeholder"><img src="Screenshot 2026-03-12 120139.png" border="0" width="400" height="250" alt="Букет Специален"></div>
+                    <h3>Слънчев лъч</h3>
+                    <p>Лято и нежност в едно. 🌻 Ярките слънчогледи срещат пухкавите божури в тази празнична кутия. Домашен зефир с истински плодов вкус – сладко изкушение без угризения.</p>
+                    <div class="product-price">49.99 лв</div>
+                    <a href="product9.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="10" data-name="Майско утро" data-price="34.99">
+                    <div class="image-placeholder"><img src="067fd3e4747e8c5a46bc65bc9dbcdece.jpg" border="0" width="400" height="250" alt="Букет Фон"></div>
+                    <h3>Майско утро</h3>
+                    <p>Пролетта е тук, независимо от времето навън! 💐 Комбинация от ароматен люляк и изящни лалета, изработени от изцяло натурален домашен зефир. Красота, която не увяхва, а се споделя.</p>
+                    <div class="product-price">34.99 лв</div>
+                    <a href="product10.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="11" data-name="Цветен фойерверк" data-price="37.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true.webp" border="0" width="400" height="250" alt="Букет Вебп"></div>
+                    <h3>Цветен фойерверк</h3>
+                    <p>Експлозия от цветове! 🌈 Когато един цвят не е достатъчен, избираме всички. Тази кутия с над 50 зефирени лалета е създадена за тези, които заслужават най-доброто.</p>
+                    <div class="product-price">37.99 лв</div>
+                    <a href="product11.html" class="cta-button">Преглед</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="gift-boxes" class="products">
+            <h2>Подаръчни Кутии</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="4" data-name="Сладко признание" data-price="35.99">
+                    <div class="image-placeholder"><img src="05cb4018a31e094dfa54ffbb881f3f42.jpg" border="0" width="400" height="250" alt="Букет Класик"></div>
+                    <h3>Сладко признание</h3>
+                    <p>Любов, която се топи в устата. 🌸 Тази кутия във формата на сърце крие най-деликатните зефирени рози – перфектният начин да кажеш „Обичам те" с вкус на горски плодове и нежност.</p>
+                    <div class="product-price">35.99 лв</div>
+                    <a href="product4.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="11" data-name="Цветен фойерверк" data-price="37.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true.webp" border="0" width="400" height="250" alt="Букет Вебп"></div>
+                    <h3>Цветен фойерверк</h3>
+                    <p>Експлозия от цветове! 🌈 Когато един цвят не е достатъчен, избираме всички. Тази кутия с над 50 зефирени лалета е създадена за тези, които заслужават най-доброто.</p>
+                    <div class="product-price">37.99 лв</div>
+                    <a href="product11.html" class="cta-button">Преглед</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="seasonal" class="products">
+            <h2>Seasonal</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="6" data-name="Нежен шепот" data-price="59.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true,m.webp" border="0" width="400" height="250" alt="Букет Луксозен"></div>
+                    <h3>Нежен шепот</h3>
+                    <p>Кошница, пълна с чудеса! 🧺 Комбинирахме дълбоко синьо с нежна праскова за един по-нестандартен и артистичен подарък. Зефиреното изкуство, което ще превърне всеки повод в специален момент.</p>
+                    <div class="product-price">59.99 лв</div>
+                    <a href="product6.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="8" data-name="Лазурна мечта" data-price="54.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true,m (2).webp" border="0" width="400" height="250" alt="Букет Зефир"></div>
+                    <h3>Лазурна мечта</h3>
+                    <p>Зефирена магия в кръг. ✨ Този цветен венец е доказателство, че десертите могат да бъдат истинско изкуство. Изискан завършек на Вашия празник или незабравим подарък за ценители.</p>
+                    <div class="product-price">54.99 лв</div>
+                    <a href="product8.html" class="cta-button">Преглед</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="flower-bouquets" class="products">
+            <h2>Flower Bouquets</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="1" data-name="Лале-О-Палуза" data-price="29.99">
+                    <div class="image-placeholder"><img src="779f82d114b7995d4818de3931dbb970.jpg" border="0" width="400" height="250" alt="Букет от лалета"></div>
+                    <h3>Лале-О-Палуза</h3>
+                    <p>Слънчево настроение в розово и жълто! ☀️ Тези зефирени лалета носят усмивки и усещане за празник. Подарете емоция, която е едновременно красива и невероятно вкусна.</p>
+                    <div class="product-price">29.99 лв</div>
+                    <a href="product1.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="5" data-name="Букет Весела" data-price="44.99">
+                    <div class="image-placeholder"><img src="0779d3d2d8e85037a565cb2a5d8c0788.jpg" border="0" width="400" height="250" alt="Букет Весела"></div>
+                    <h3>Букет Весела</h3>
+                    <p>Изобилие от детайли и вкус. ✨ Всеки листенце е ръчно шприцовано, за да създадем този разкошен букет. Малко сладост, много стил и нула изкуствени консерванти.</p>
+                    <div class="product-price">44.99 лв</div>
+                    <a href="product5.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="7" data-name="Пурпурна елегантност" data-price="64.99">
+                    <div class="image-placeholder"><img src="Screenshot 2026-03-12 112147.png" border="0" width="400" height="250" alt="Букет Премиум"></div>
+                    <h3>Пурпурна елегантност</h3>
+                    <p>Вечна пролет в ръцете Ви! 💐 Класическата елегантност на лалетата, пресъздадена в най-деликатния зефир. Плътната комбинация от дълбоки червени и маув тонове не изисква ваза – само желание да бъде споделена.</p>
+                    <div class="product-price">64.99 лв</div>
+                    <a href="product7.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="9" data-name="Слънчев лъч" data-price="49.99">
+                    <div class="image-placeholder"><img src="Screenshot 2026-03-12 120139.png" border="0" width="400" height="250" alt="Букет Специален"></div>
+                    <h3>Слънчев лъч</h3>
+                    <p>Лято и нежност в едно. 🌻 Ярките слънчогледи срещат пухкавите божури в тази празнична кутия. Домашен зефир с истински плодов вкус – сладко изкушение без угризения.</p>
+                    <div class="product-price">49.99 лв</div>
+                    <a href="product9.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="10" data-name="Майско утро" data-price="34.99">
+                    <div class="image-placeholder"><img src="067fd3e4747e8c5a46bc65bc9dbcdece.jpg" border="0" width="400" height="250" alt="Букет Фон"></div>
+                    <h3>Майско утро</h3>
+                    <p>Пролетта е тук, независимо от времето навън! 💐 Комбинация от ароматен люляк и изящни лалета, изработени от изцяло натурален домашен зефир. Красота, която не увяхва, а се споделя.</p>
+                    <div class="product-price">34.99 лв</div>
+                    <a href="product10.html" class="cta-button">Преглед</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="best-sellers" class="products">
+            <h2>Best Sellers</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="4" data-name="Сладко признание" data-price="35.99">
+                    <div class="image-placeholder"><img src="05cb4018a31e094dfa54ffbb881f3f42.jpg" border="0" width="400" height="250" alt="Букет Класик"></div>
+                    <h3>Сладко признание</h3>
+                    <p>Любов, която се топи в устата. 🌸 Тази кутия във формата на сърце крие най-деликатните зефирени рози – перфектният начин да кажеш „Обичам те" с вкус на горски плодове и нежност.</p>
+                    <div class="product-price">35.99 лв</div>
+                    <a href="product4.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="7" data-name="Пурпурна елегантност" data-price="64.99">
+                    <div class="image-placeholder"><img src="Screenshot 2026-03-12 112147.png" border="0" width="400" height="250" alt="Букет Премиум"></div>
+                    <h3>Пурпурна елегантност</h3>
+                    <p>Вечна пролет в ръцете Ви! 💐 Класическата елегантност на лалетата, пресъздадена в най-деликатния зефир. Плътната комбинация от дълбоки червени и маув тонове не изисква ваза – само желание да бъде споделена.</p>
+                    <div class="product-price">64.99 лв</div>
+                    <a href="product7.html" class="cta-button">Преглед</a>
+                </div>
+                <div class="product-card" data-id="11" data-name="Цветен фойерверк" data-price="37.99">
+                    <div class="image-placeholder"><img src="rs=w_1080,cg_true.webp" border="0" width="400" height="250" alt="Букет Вебп"></div>
+                    <h3>Цветен фойерверк</h3>
+                    <p>Експлозия от цветове! 🌈 Когато един цвят не е достатъчен, избираме всички. Тази кутия с над 50 зефирени лалета е създадена за тези, които заслужават най-доброто.</p>
+                    <div class="product-price">37.99 лв</div>
+                    <a href="product11.html" class="cta-button">Преглед</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Manage cart state in localStorage so it persists across pages
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        let cartCount = 0;
+        const EUR_RATE = 1.95583;
+
+        function formatDualPrice(amount) {
+            const numericAmount = Number(amount) || 0;
+            const euroAmount = numericAmount / EUR_RATE;
+            return `${numericAmount.toFixed(2)} лв / €${euroAmount.toFixed(2)}`;
+        }
+
+        function renderCardPrices() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                const priceValue = Number(card.getAttribute('data-price')) || 0;
+                const priceEl = card.querySelector('.product-price');
+                if (priceEl) priceEl.textContent = formatDualPrice(priceValue);
+            });
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCart() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            const counter = document.querySelector('.cart-count');
+            if (counter) counter.textContent = cartCount;
+
+            const cartItems = document.getElementById('cart-items');
+            if (cartItems) {
+                cartItems.innerHTML = '';
+                let total = 0;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+
+                    const imageHTML = item.image ? `<img class="cart-item-image" src="${item.image}" alt="${item.name}">` : `<div class="cart-item-image" style="display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px;">No image</div>`;
+                    const flavours = [
+                        item.flavour1 ? `<span class="cart-item-flavour">F1: ${item.flavour1}</span>` : '',
+                        item.flavour2 ? `<span class="cart-item-flavour">F2: ${item.flavour2}</span>` : ''
+                    ].join('');
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        ${imageHTML}
+                        <div class="cart-item-details">
+                            <span class="cart-item-name">${item.name}</span>
+                            ${flavours}
+                            <span class="cart-item-price">${formatDualPrice(item.price)}</span>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeQuantity(${item.id}, -1, '${item.flavour1||''}', '${item.flavour2||''}')">−</button>
+                                <span class="qty-display">${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQuantity(${item.id}, 1, '${item.flavour1||''}', '${item.flavour2||''}')">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-total">${formatDualPrice(itemTotal)}</div>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.flavour1||''}', '${item.flavour2||''}')">×</button>
+                    `;
+                    cartItems.appendChild(itemElement);
+                });
+                document.getElementById('cart-total').textContent = formatDualPrice(total);
+            }
+        }
+
+        function removeFromCart(productId, flavour1 = '', flavour2 = '') {
+            cart = cart.filter(item => !(item.id === productId && item.flavour1 === flavour1 && item.flavour2 === flavour2));
+            saveCart();
+            updateCart();
+        }
+
+        function changeQuantity(productId, delta, flavour1 = '', flavour2 = '') {
+            cart = cart.map(item => {
+                if (item.id === productId && item.flavour1 === flavour1 && item.flavour2 === flavour2) {
+                    const nextQty = item.quantity + delta;
+                    return nextQty > 0 ? { ...item, quantity: nextQty } : item;
+                }
+                return item;
+            }).filter(item => item.quantity > 0);
+            saveCart();
+            updateCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Количката е празна!');
+                return;
+            }
+            alert('Благодарим за поръчката! Ще се свържем с вас скоро.');
+            cart = [];
+            saveCart();
+            updateCart();
+            window.location.href = 'new 1.html';
+        }
+
+        renderCardPrices();
+        updateCart();
+
+        // inject flavour dropdowns and buy button into product cards
+        function addFlavourSelectorsToCards() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                if (card.querySelector('.flavour1')) return;
+                const div = document.createElement('div');
+                div.className = 'flavour-group';
+                div.innerHTML = `
+                    <label>Flavour 1:
+                        <select class="flavour1">
+                          <option>Mango</option><option>Strawberry</option><option>Apple</option><option>Blueberry</option><option>Lemon</option>
+                        </select>
+                    </label>
+                    <label>Flavour 2:
+                        <select class="flavour2">
+                          <option>Mango</option><option>Strawberry</option><option>Apple</option><option>Blueberry</option><option>Lemon</option>
+                        </select>
+                    </label>
+                `;
+                const price = card.querySelector('.product-price');
+                if (price) price.insertAdjacentElement('beforebegin', div);
+            });
+            // Add buy button to all cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                if (card.querySelector('.buy-btn')) return;
+                const link = card.querySelector('a.cta-button');
+                if (link) {
+                    const btn = document.createElement('button');
+                    btn.className = 'cta-button buy-btn';
+                    btn.textContent = 'Купи';
+                    btn.onclick = () => buyNow(btn);
+                    link.insertAdjacentElement('afterend', btn);
+                }
+            });
+        }
+        addFlavourSelectorsToCards();
+
+        function buyNow(btn) {
+            const card = btn.closest('.product-card');
+            const id = parseInt(card.getAttribute('data-id'));
+            const name = card.getAttribute('data-name');
+            const price = parseFloat(card.getAttribute('data-price'));
+            const img = card.querySelector('img').src;
+            const f1 = card.querySelector('.flavour1') ? card.querySelector('.flavour1').value : '';
+            const f2 = card.querySelector('.flavour2') ? card.querySelector('.flavour2').value : '';
+            const existing = cart.find(i => i.id === id && i.flavour1 === f1 && i.flavour2 === f2);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1, flavour1: f1, flavour2: f2, image: img });
+            }
+            saveCart();
+            updateCart();
+            window.location.href = 'cart.html';
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                card.style.display = name.includes(query) ? 'block' : 'none';
+            });
+        }
+
+        function toggleAuth() {
+            const current = localStorage.getItem('currentUser');
+            if (current) {
+                if (confirm('Искате ли да излезете?')) {
+                    logoutUser();
+                }
+                return;
+            }
+            const modal = document.getElementById('auth-modal');
+            if (modal) modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('auth-title').textContent = 'Регистрация';
+        }
+        function showLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('auth-title').textContent = 'Вход';
+        }
+        function registerUser() {
+            const u = document.getElementById('reg-username').value;
+            const p = document.getElementById('reg-password').value;
+            if (!u || !p) { alert('Попълнете всички полета'); return; }
+            let users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[u]) { alert('Потребителят вече съществува'); return; }
+            users[u] = p;
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Регистрация успешна');
+            showLogin();
+        }
+        function loginUser() {
+            const u = document.getElementById('login-username').value;
+            const p = document.getElementById('login-password').value;
+            let users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[u] === p) {
+                localStorage.setItem('currentUser', u);
+                alert('Влязохте като ' + u);
+                toggleAuth();
+                updateUserDisplay();
+            } else {
+                alert('Невалидни данни');
+            }
+        }
+        function logoutUser() {
+            localStorage.removeItem('currentUser');
+            updateUserDisplay();
+        }
+        function updateUserDisplay() {
+            const nameEl = document.getElementById('user-name');
+            const u = localStorage.getItem('currentUser');
+            if (nameEl) {
+                nameEl.textContent = u ? u + ' ' : '';
+            }
+        }
+        updateUserDisplay();
+
+    </script>
+
+    <script src="inventory-manager.js"></script>
+    <script src="auth-global.js"></script>
+</body>
+</html>

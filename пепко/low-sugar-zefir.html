@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Sugar Зефир - generation zef</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+    <style>
+        .zefir-hero {
+            background: linear-gradient(135deg, #fff0f0 0%, #ffe4e4 100%);
+            border-radius: 18px;
+            padding: 50px 40px;
+            text-align: center;
+            margin: 30px;
+        }
+        .zefir-hero h1 { font-size: 42px; color: #d32f2f; margin-bottom: 14px; }
+        .zefir-hero p { font-size: 18px; color: #666; max-width: 640px; margin: 0 auto; line-height: 1.7; }
+
+        .zefir-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            padding: 10px 30px 40px;
+        }
+        .zefir-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+            padding: 28px 22px;
+            text-align: center;
+            transition: transform 0.25s;
+        }
+        .zefir-card:hover { transform: translateY(-5px); }
+        .zefir-card .icon { font-size: 48px; margin-bottom: 14px; }
+        .zefir-card h3 { font-size: 20px; color: #d32f2f; margin-bottom: 10px; }
+        .zefir-card p { font-size: 14px; color: #666; line-height: 1.6; }
+
+        .zefir-info {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            margin: 0 30px 40px;
+            padding: 34px 36px;
+        }
+        .zefir-info h2 { color: #d32f2f; font-size: 26px; margin-bottom: 16px; }
+        .zefir-info p { color: #555; line-height: 1.8; font-size: 15px; margin-bottom: 14px; }
+        .zefir-info ul { color: #555; font-size: 15px; line-height: 1.9; padding-left: 22px; }
+
+        .zefir-cta { text-align: center; padding: 20px 30px 50px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="new 1.html">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Преглед на продукти...">
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-count">0</span>
+                🛒
+            </a>
+        </header>
+
+        <div class="zefir-hero">
+            <h1>🍬 Low Sugar Зефир</h1>
+            <p>Нашите зефири с ниско съдържание на захар са специално разработени за хора, които искат да се наслаждават на сладкото, без компромис с вкуса или здравето.</p>
+        </div>
+
+        <div class="zefir-grid">
+            <div class="zefir-card">
+                <div class="icon">🌿</div>
+                <h3>Натурален състав</h3>
+                <p>Изработени от натурален плодов сок, агар-агар и минимум подсладители. Без изкуствени оцветители и консерванти.</p>
+            </div>
+            <div class="zefir-card">
+                <div class="icon">⚖️</div>
+                <h3>По-малко калории</h3>
+                <p>С до 40% по-малко захар от класическия зефир, всяко парче заема своята малка, вкусна ниша без угризения.</p>
+            </div>
+            <div class="zefir-card">
+                <div class="icon">🎨</div>
+                <h3>Разнообразие от вкусове</h3>
+                <p>Манго, ягода, ябълка, боровинка и лимон – пет ярки вкуса, изработени ръчно в нашата работилница всеки ден.</p>
+            </div>
+            <div class="zefir-card">
+                <div class="icon">🎁</div>
+                <h3>Перфектен подарък</h3>
+                <p>Подходящ за хора с диабет, деца, спортисти и всеки, който цени вкусното и здравословното едновременно.</p>
+            </div>
+        </div>
+
+        <div class="zefir-info">
+            <h2>Какво е зефир?</h2>
+            <p>
+                Зефирът е руска сладкарска традиция, създадена в Москва в началото на 20-ти век. Думата идва от гръцкото <em>Зефирос</em> — богът на западния вятър — и отразява нежната, въздушна текстура на сладкото.
+            </p>
+            <p>
+                За разлика от обикновения бонбон, класическият зефир се прави чрез разбиване на плодово пюре с яйчен белтък и агар или пектин. Резултатът е изключително лек десерт с плодов вкус и почти кремообразна структура.
+            </p>
+            <h2>Защо Low Sugar?</h2>
+            <p>
+                В generation zef вярваме, че радостта от сладкото не трябва да бъде привилегия само за някои. Затова нашите Low Sugar зефири заместват голяма част от захарта с естествени плодови подсладители, без да жертваме:
+            </p>
+            <ul>
+                <li>Нежната, топяща се текстура</li>
+                <li>Интензивния плодов аромат</li>
+                <li>Красивия вид — идеален за подарък</li>
+                <li>100% ръчното изработване</li>
+            </ul>
+            <p style="margin-top: 20px;">
+                Всеки зефир е правен в деня на изпращане, за да получите максимална свежест и вкус. Опакован внимателно в елегантни кутии, той е подходящ за рожден ден, годишнина, или просто така — за да накарате някого да се усмихне. 🌸
+            </p>
+        </div>
+
+        <div class="zefir-cta">
+            <p style="font-size:17px; color:#555; margin-bottom:20px;">Разгледайте нашите букети, включително зефирени композиции</p>
+            <a href="new 1.html" class="cta-button">Към магазина</a>
+        </div>
+
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        function updateCart() {
+            const count = cart.reduce((t, i) => t + i.quantity, 0);
+            const counter = document.querySelector('.cart-count');
+            if (counter) counter.textContent = count;
+        }
+        updateCart();
+    </script>
+
+    <script src="auth-global.js"></script>
+</body>
+</html>

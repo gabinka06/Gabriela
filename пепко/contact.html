@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакт - Пепко</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="new 1.html">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Преглед на продукти..." oninput="filterProducts()">
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-count">0</span>
+                🛒
+            </a>
+        </header>
+        <div id="cart-modal" class="cart-modal">
+            <div class="cart-content">
+                <div class="cart-header">
+                    <h3>Количка</h3>
+                    <span class="close-cart" onclick="toggleCart()">&times;</span>
+                </div>
+                <div id="cart-items" class="cart-items"></div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong>Общо: <span id="cart-total">0.00</span> лв</strong>
+                    </div>
+                    <button class="checkout-btn" onclick="checkout()">Поръчай</button>
+                </div>
+            </div>
+        </div>
+        <main class="products" style="text-align:center; padding:40px; position:relative; min-height:calc(100vh - 220px);">
+            <h1>Контакт</h1>
+            <style>
+div.transp { width:1000px; height:auto; margin:30px auto;
+background-color:#ffffff; opacity:0.6;
+filter:alpha(opacity=60); }
+div.transp p { margin:20px 40px; font-weight:bold; color:#000000; }
+div.transp .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:20px 40px; text-align:left; }
+div.transp .contact-section h3 { margin:0 0 10px 0; font-size:16px; color:#333; }
+div.transp .contact-section p { margin:4px 0; font-size:14px; }
+@media(max-width:700px){ div.transp { width:95%; } div.transp .contact-grid { grid-template-columns:1fr; } }
+            </style>
+            <div class="background">
+                <div class="transp">
+                    <p>Свържете се с нас – с удоволствие ще ви помогнем с поръчки, въпроси или специални пожелания!</p>
+                    <div class="contact-grid">
+                        <div class="contact-section">
+                            <h3>📧 Имейл</h3>
+                            <p><a href="mailto:infogenerationzef@gmail.com">infogenerationzef@gmail.com</a></p>
+                            <p>Отговаряме до 24 часа в работни дни.</p>
+                        </div>
+                        <div class="contact-section">
+                            <h3>📞 Телефон</h3>
+                            <p>+359 88 450 9343</p>
+                            <p>Пон – Пет: 9:00 – 18:00 ч.</p>
+                        </div>
+                        <div class="contact-section">
+                            <h3>📍 Адрес</h3>
+                            <p>ул. Роза 12, София 1000</p>
+                            <p>България</p>
+                        </div>
+                        <div class="contact-section">
+                            <h3>🌐 Социални мрежи</h3>
+                            <p>Instagram: @generation.zef</p>
+                            <p>Facebook: Generation Zef</p>
+                        </div>
+                    </div>
+                    <p>За индивидуални поръчки и специални поводи – не се колебайте да се свържете с нас директно. Работим с любов към всеки детайл! 🌸</p>
+                </div>
+            </div>
+            <div style="position:absolute; left:50%; bottom:20px; transform:translateX(-50%);">
+                <a href="new 1.html" class="cta-button" style="background:#777;">Назад към магазина</a>
+            </div>
+        </main>
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); }
+        function updateCart(){
+            const count = cart.reduce((t,i)=>t+i.quantity,0);
+            const counter = document.querySelector('.cart-count'); if(counter) counter.textContent = count;
+            const cartItems = document.getElementById('cart-items');
+            if(cartItems){
+                cartItems.innerHTML = '';
+                let total=0;
+                cart.forEach(item=>{
+                    const t=item.price*item.quantity; total+=t;
+                    const el=document.createElement('div'); el.className='cart-item';
+                    el.innerHTML = `
+                        <div class="cart-item-info">
+                            <span class="cart-item-name">${item.name}</span>
+                            <span class="cart-item-price">${item.price} лв x ${item.quantity}</span>
+                        </div>
+                        <div class="cart-item-total">${t.toFixed(2)} лв</div>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})">×</button>
+                    `;
+                    cartItems.appendChild(el);
+                });
+                document.getElementById('cart-total').textContent = total.toFixed(2);
+            }
+        }
+        function removeFromCart(pid){ cart=cart.filter(i=>i.id!==pid); saveCart(); updateCart(); }
+        function toggleCart(){ const m=document.getElementById('cart-modal'); if(m)m.style.display=m.style.display==='block'?'none':'block'; }
+        function checkout(){ if(cart.length===0){alert('Количката е празна!');return;}alert('Благодарим!'); cart=[]; saveCart(); updateCart(); toggleCart(); }
+        window.onclick=function(e){const m=document.getElementById('cart-modal'); if(e.target===m) m.style.display='none';};
+        updateCart();
+    </script>
+
+    <script src="auth-global.js"></script>
+</body>
+</html>

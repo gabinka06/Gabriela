@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация - generation zef</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+    <style>
+        .announce {
+            max-width: 1160px;
+            margin: 16px auto 0;
+            padding: 10px 16px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid rgba(90, 67, 52, 0.12);
+            background: linear-gradient(90deg, rgba(191, 78, 48, 0.16) 0%, rgba(242, 210, 164, 0.30) 100%);
+            font-size: 13px;
+            font-weight: 700;
+            color: #6b3b2b;
+            letter-spacing: 0.3px;
+        }
+        .info-wrap { max-width: 1160px; margin: 24px auto 34px; padding: 0 16px; }
+        .hero {
+            background: rgba(255, 252, 248, 0.9);
+            border: 1px solid rgba(90, 67, 52, 0.12);
+            border-radius: 24px;
+            box-shadow: 0 12px 36px rgba(64, 41, 31, 0.12);
+            padding: 34px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        .hero h1 { margin: 0 0 10px; font-size: 42px; line-height: 1.1; }
+        .hero p { margin: 0 0 16px; color: #5d554d; font-size: 17px; }
+        .hero-points { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+        .hero-points span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.82);
+            border: 1px solid rgba(90,67,52,0.12);
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 13px;
+            color: #594c44;
+            font-weight: 700;
+        }
+        .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .hero-side {
+            background: linear-gradient(145deg, rgba(191,78,48,0.14) 0%, rgba(242,210,164,0.34) 100%);
+            border-radius: 20px;
+            padding: 22px;
+            border: 1px solid rgba(90,67,52,0.12);
+        }
+        .hero-side h3 { margin: 0 0 8px; font-size: 22px; }
+        .hero-side p { margin: 6px 0; color: #5d554d; }
+        .section-title {
+            margin: 24px 0 12px;
+            font-size: 28px;
+            color: #3d3029;
+        }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(90, 67, 52, 0.12);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 8px 24px rgba(64, 41, 31, 0.08);
+        }
+        .info-card h2 { margin: 0 0 10px; font-size: 19px; }
+        .info-card p { margin: 8px 0; color: #5d554d; }
+        .info-card ul { margin: 6px 0 0 18px; color: #5d554d; }
+        .delivery-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .delivery-table th, .delivery-table td {
+            border-bottom: 1px solid rgba(90, 67, 52, 0.12);
+            padding: 8px 6px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .mini-tag {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(191, 78, 48, 0.1);
+            color: #8d351f;
+        }
+        .faq-item { padding: 10px 0; border-bottom: 1px dashed rgba(90,67,52,0.2); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item strong { display: block; margin-bottom: 5px; }
+        @media (max-width: 860px) {
+            .hero { grid-template-columns: 1fr; padding: 24px; }
+            .hero h1 { font-size: 34px; }
+            .hero-points { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="new 1.html">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Информационна страница" disabled>
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-count">0</span>
+                🛒
+            </a>
+        </header>
+
+        <div class="announce">БЕЗПЛАТНО ОПАКОВАНЕ • ДВОЙНИ ЦЕНИ В ЛВ/€ • ДОСТАВКА ДО ОФИС €4 / ДО АДРЕС €6</div>
+
+        <main class="info-wrap">
+            <section class="hero">
+                <div>
+                    <h1>Кои сме ние в generation zef?</h1>
+                    <p>Ние създаваме зефирени букети, които изглеждат като подарък и се запомнят като изживяване. Работим с фокус върху вкус, визия и детайл, за да може всяка поръчка да носи емоция.</p>
+                    <div class="hero-points">
+                        <span>✔ Ръчна изработка</span>
+                        <span>✔ Натурални вкусове</span>
+                        <span>✔ Персонални поръчки</span>
+                        <span>✔ Бърза доставка</span>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="new 1.html" class="cta-button" style="display:inline-block; width:auto; margin:0;">Разгледай продуктите</a>
+                        <a href="contact.html" class="cta-button" style="display:inline-block; width:auto; margin:0; background:#7a6a5f;">Свържи се с нас</a>
+                    </div>
+                </div>
+                <aside class="hero-side">
+                    <h3>Защо клиентите избират нас?</h3>
+                    <p>Работим с малки серии, за да запазим качество във всяка поръчка.</p>
+                    <p>Цените се виждат прозрачно в лева и евро още преди финализиране.</p>
+                    <p>Предлагаме удобна доставка с ясни такси и без скрити условия.</p>
+                    <span class="mini-tag">Обновено: март 2026</span>
+                </aside>
+            </section>
+
+            <h2 class="section-title">Какво предлагаме</h2>
+            <section class="info-grid">
+                <article class="info-card">
+                    <h2>Продуктово портфолио</h2>
+                    <p>Магазинът включва 11 основни букета, всеки с отделна страница, снимка, описание и избор на вкусове.</p>
+                    <p>Това позволява на клиента да види продукта в детайл и да избере по-лесно.</p>
+                </article>
+
+                <article class="info-card">
+                    <h2>Ценообразуване</h2>
+                    <p>Всички цени са показани в <strong>лева и евро</strong> в каталога, продуктовите страници и количката.</p>
+                    <p>Няма скрити такси. Клиентът вижда междинна сума, доставка и крайна цена.</p>
+                </article>
+
+                <article class="info-card">
+                    <h2>Доставка</h2>
+                    <table class="delivery-table">
+                        <thead>
+                            <tr><th>Метод</th><th>Цена</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Взимане от офис</td><td>€4.00 (7.82 лв)</td></tr>
+                            <tr><td>Доставка до адрес</td><td>€6.00 (11.73 лв)</td></tr>
+                        </tbody>
+                    </table>
+                    <span class="mini-tag">Таксата се изчислява автоматично в количката</span>
+                </article>
+            </section>
+
+            <h2 class="section-title">Сигурност и доверие</h2>
+            <section class="info-grid">
+                <article class="info-card">
+                    <h2>Профил и история</h2>
+                    <p>Всеки потребител има достъп до профил, където се виждат текущата количка и историята на поръчките.</p>
+                    <p>Това улеснява повторни поръчки и проследяване на предишни покупки.</p>
+                </article>
+
+                <article class="info-card">
+                    <h2>Процес на поръчка</h2>
+                    <ul>
+                        <li>Избор на продукт и вкусове</li>
+                        <li>Добавяне в количка</li>
+                        <li>Избор на доставка (офис/адрес)</li>
+                        <li>Потвърждение в страницата за поръчка</li>
+                    </ul>
+                    <p>Всички стъпки са оптимизирани за бърза поръчка от телефон и компютър.</p>
+                </article>
+
+                <article class="info-card">
+                    <h2>Обслужване на клиенти</h2>
+                    <p>Отговаряме при въпроси за наличности, персонални заявки и доставка.</p>
+                    <p>Имейл: <a href="mailto:infogenerationzef@gmail.com">infogenerationzef@gmail.com</a></p>
+                    <p>Телефон: +359 88 450 9343</p>
+                    <p>Instagram: @generation.zef</p>
+                </article>
+            </section>
+
+            <h2 class="section-title">Често задавани въпроси</h2>
+            <section class="info-card">
+                <div class="faq-item">
+                    <strong>Мога ли да поръчам за конкретна дата?</strong>
+                    Да, свържете се с нас предварително и ще потвърдим възможностите за избраната дата.
+                </div>
+                <div class="faq-item">
+                    <strong>Мога ли да видя крайната цена преди поръчка?</strong>
+                    Да, в количката виждате артикули, доставка и обща сума преди финализиране.
+                </div>
+                <div class="faq-item">
+                    <strong>Имате ли страница с профил?</strong>
+                    Да, в профила виждате текущата количка и историята на вашите поръчки.
+                </div>
+            </section>
+
+            <h2 class="section-title">Бърз достъп</h2>
+            <section class="info-card">
+                <a href="new 1.html" class="cta-button" style="display:inline-block; width:auto; margin:0 8px 8px 0;">Към магазина</a>
+                <a href="cart.html" class="cta-button" style="display:inline-block; width:auto; margin:0 8px 8px 0;">Към количката</a>
+                <a href="profile.html" class="cta-button" style="display:inline-block; width:auto; margin:0 8px 8px 0;">Към профила</a>
+                <a href="low-sugar-zefir.html" class="cta-button" style="display:inline-block; width:auto; margin:0 8px 8px 0; background:#7a6a5f;">Low Sugar Zefir</a>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const count = Array.isArray(cart) ? cart.reduce((sum, item) => sum + (item.quantity || 0), 0) : 0;
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) cartCount.textContent = count;
+
+        const user = localStorage.getItem('currentUser');
+        const userName = document.getElementById('user-name');
+        if (userName) userName.textContent = user ? user + ' ' : '';
+    </script>
+
+    <script src="auth-global.js"></script>
+</body>
+</html>

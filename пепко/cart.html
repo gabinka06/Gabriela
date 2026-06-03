@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Количка - generation zef</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="new 1.html">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Преглед на продукти..." oninput="filterProducts()">
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-count">0</span>
+                🛒
+            </a>
+        </header>
+
+        <main class="products" style="padding: 40px;">
+            <h2>Количка</h2>
+            <div class="cart-content" style="max-width: 960px; margin: 0 auto;">
+                <div class="cart-body">
+                    <div id="cart-items" class="cart-items"></div>
+                    <div class="cart-summary">
+                        <h4>Обобщение на поръчката</h4>
+                        <p>Тук можете да прегледате вашите артикули и да промените количеството.</p>
+
+                        <div class="customer-form" style="margin-top: 18px;">
+                            <h5>Данни за получаване</h5>
+                            <input id="cust-name" type="text" placeholder="Име" style="width:100%; margin-bottom:10px; padding:10px;" required>
+                            <input id="cust-surname" type="text" placeholder="Фамилия" style="width:100%; margin-bottom:10px; padding:10px;" required>
+                            <input id="cust-email" type="email" placeholder="Имейл" style="width:100%; margin-bottom:10px; padding:10px;" required>
+                            <input id="cust-phone" type="tel" placeholder="Телефон" style="width:100%; margin-bottom:10px; padding:10px;" required>
+                            <input id="cust-address" type="text" placeholder="Адрес (само за доставка до адрес)" style="width:100%; margin-bottom:10px; padding:10px;">
+                            <textarea id="cust-notes" placeholder="Допълнителна информация (примерно предпочитания, коментари)" style="width:100%; padding:10px; min-height:80px;"></textarea>
+
+                            <div style="margin-top: 14px;">
+                                <div style="font-weight: 700; margin-bottom: 8px;">Начин на доставка</div>
+                                <label style="display: block; margin-bottom: 6px;"><input type="radio" name="delivery" value="office" checked onchange="updateDeliveryOptions()"> Взимане от офис на Еконт/Спиди</label>
+                                <label style="display: block;"><input type="radio" name="delivery" value="address" onchange="updateDeliveryOptions()"> Доставка до адрес</label>
+                                <p style="margin-top: 8px; color: #6f665e; font-size: 13px;">Цена за доставка: офис €4.00, адрес €6.00.</p>
+
+                                <div id="delivery-office-options" style="margin-top: 12px; padding: 12px; border: 1px solid #eee; border-radius: 12px; background: #fafafa;">
+                                    <label style="display: block; margin-bottom: 10px; font-weight: 600;">Изберете куриер</label>
+                                    <select id="delivery-carrier" style="width: 100%; padding: 10px; margin-bottom: 12px;" onchange="populateOfficeList()">
+                                        <option value="spidi">Спиди</option>
+                                        <option value="econt">Еконт</option>
+                                    </select>
+
+                                    <label style="display: block; margin-bottom: 10px; font-weight: 600;">Изберете офис</label>
+                                    <select id="delivery-office" style="width: 100%; padding: 10px;">
+                                        <option value="">(Изберете офис)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid #eee;">
+                                <div style="font-weight: 700; margin-bottom: 8px;">Начин на плащане</div>
+                                <label style="display: block; margin-bottom: 6px;"><input type="radio" name="payment-method" value="cash" checked> Наложен платеж (в брой при доставка)</label>
+                                <label style="display: block;"><input type="radio" name="payment-method" value="card"> Плащане с карта сега</label>
+                                <p style="margin-top: 8px; color: #6f665e; font-size: 13px;">При избор на карта ще бъдете пренасочени към защитена страница за данни на дебитна/кредитна карта.</p>
+                            </div>
+                        </div>
+
+                        <div class="cart-total" style="margin-top: 15px;">
+                            <strong>Артикули: <span id="items-subtotal">0.00</span></strong>
+                        </div>
+                        <div class="cart-total" style="margin-top: 10px;">
+                            <strong>Доставка: <span id="delivery-fee">0.00</span></strong>
+                        </div>
+                        <div class="cart-total" style="margin-top: 10px;">
+                            <strong>Общо: <span id="cart-total">0.00</span></strong>
+                        </div>
+                        <button type="button" class="checkout-btn" onclick="checkout()">Поръчай</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script>
+        function safeParse(value, fallback) {
+            try {
+                return JSON.parse(value);
+            } catch (error) {
+                return fallback;
+            }
+        }
+
+        // Manage cart state in localStorage so it persists across pages
+        let cart = safeParse(localStorage.getItem('cart') || '[]', []);
+        if (!Array.isArray(cart)) cart = [];
+        let cartCount = 0;
+        const EUR_RATE = 1.95583;
+        const DELIVERY_FEES_BGN = {
+            office: Number((4 * EUR_RATE).toFixed(2)),
+            address: Number((6 * EUR_RATE).toFixed(2))
+        };
+
+        function formatDualPrice(amount) {
+            const bgn = Number(amount) || 0;
+            const eur = bgn / EUR_RATE;
+            return `${bgn.toFixed(2)} лв / €${eur.toFixed(2)}`;
+        }
+
+        function getSelectedDeliveryMethod() {
+            return document.querySelector('input[name="delivery"]:checked')?.value || 'office';
+        }
+
+        function getDeliveryFeeBgn(deliveryMethod = getSelectedDeliveryMethod()) {
+            return DELIVERY_FEES_BGN[deliveryMethod] || 0;
+        }
+
+        function setSummaryPrice(elementId, amount) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            element.textContent = formatDualPrice(amount);
+        }
+
+        function renderSummaryTotals(itemsSubtotal) {
+            const deliveryFee = getDeliveryFeeBgn();
+            const grandTotal = itemsSubtotal + deliveryFee;
+            setSummaryPrice('items-subtotal', itemsSubtotal);
+            setSummaryPrice('delivery-fee', deliveryFee);
+            setSummaryPrice('cart-total', grandTotal);
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCart() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            const counter = document.querySelector('.cart-count');
+            if (counter) counter.textContent = cartCount;
+            let total = 0;
+
+            const cartItems = document.getElementById('cart-items');
+            if (cartItems) {
+                cartItems.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+
+                    const imageHTML = item.image ? `<img class="cart-item-image" src="${item.image}" alt="${item.name}">` : `<div class="cart-item-image" style="display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px;">No image</div>`;
+                    const flavours = [
+                        item.flavour1 ? `<span class="cart-item-flavour">F1: ${item.flavour1}</span>` : '',
+                        item.flavour2 ? `<span class="cart-item-flavour">F2: ${item.flavour2}</span>` : ''
+                    ].join('');
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        ${imageHTML}
+                        <div class="cart-item-details">
+                            <span class="cart-item-name">${item.name}</span>
+                            ${flavours}
+                            <span class="cart-item-price">${formatDualPrice(item.price)}</span>
+                            <div class="qty-controls">
+                                <button class="qty-btn minus-btn" data-index="${index}">−</button>
+                                <input type="number" class="qty-input" data-index="${index}" min="1" max="999" value="${item.quantity}">
+                                <button class="qty-btn plus-btn" data-index="${index}">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-total">${formatDualPrice(itemTotal)}</div>
+                        <button class="remove-btn" data-index="${index}">×</button>
+                    `;
+                    cartItems.appendChild(itemElement);
+                });
+
+                // Добавяне на event listeners за минус бутони
+                document.querySelectorAll('.minus-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const idx = this.getAttribute('data-index');
+                        const item = cart[idx];
+                        changeQuantity(item.id, -1, item.flavour1 || '', item.flavour2 || '');
+                    });
+                });
+
+                // Добавяне на event listeners за плюс бутони
+                document.querySelectorAll('.plus-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const idx = this.getAttribute('data-index');
+                        const item = cart[idx];
+                        changeQuantity(item.id, 1, item.flavour1 || '', item.flavour2 || '');
+                    });
+                });
+
+                // Добавяне на event listeners за input поле
+                document.querySelectorAll('.qty-input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const idx = this.getAttribute('data-index');
+                        const item = cart[idx];
+                        const newQty = parseInt(this.value) || 1;
+                        setQuantity(item.id, newQty, item.flavour1 || '', item.flavour2 || '');
+                    });
+                });
+
+                // Добавяне на event listeners за премахване
+                document.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const idx = this.getAttribute('data-index');
+                        const item = cart[idx];
+                        removeFromCart(item.id, item.flavour1 || '', item.flavour2 || '');
+                    });
+                });
+            }
+
+            renderSummaryTotals(total);
+        }
+
+        function removeFromCart(productId, flavour1 = '', flavour2 = '') {
+            cart = cart.filter(item => !(item.id === productId && item.flavour1 === flavour1 && item.flavour2 === flavour2));
+            saveCart();
+            updateCart();
+        }
+
+        function changeQuantity(productId, delta, flavour1 = '', flavour2 = '') {
+            let updated = false;
+            cart = cart.map(item => {
+                if (item.id === productId && item.flavour1 === flavour1 && item.flavour2 === flavour2) {
+                    const nextQty = item.quantity + delta;
+                    
+                    // Проверка за наличност
+                    if (typeof getStockForProduct === 'function') {
+                        const availableStock = getStockForProduct(productId);
+                        if (nextQty > availableStock) {
+                            alert(`⚠️ Недостатъчна наличност!\n\nПродукт: ${item.name}\nНалична количество: ${availableStock} бр.\nВие искате: ${nextQty} бр.`);
+                            return item; // Не променяме количеството
+                        }
+                    }
+                    
+                    if (nextQty > 0) {
+                        updated = true;
+                        return { ...item, quantity: nextQty };
+                    }
+                    return null;
+                }
+                return item;
+            }).filter(item => item !== null);
+            
+            if (updated) {
+                saveCart();
+                updateCart();
+            }
+        }
+
+        function setQuantity(productId, newQty, flavour1 = '', flavour2 = '') {
+            newQty = parseInt(newQty) || 0;
+            if (newQty <= 0) {
+                removeFromCart(productId, flavour1, flavour2);
+                return;
+            }
+            
+            // Проверка за наличност
+            if (typeof getStockForProduct === 'function') {
+                const availableStock = getStockForProduct(productId);
+                const cartItem = cart.find(item => item.id === productId && item.flavour1 === flavour1 && item.flavour2 === flavour2);
+                
+                if (newQty > availableStock) {
+                    alert(`⚠️ Недостатъчна наличност!\n\nПродукт: ${cartItem?.name || 'Неизвестен'}\nНалична количество: ${availableStock} бр.\nВие искате: ${newQty} бр.`);
+                    // Връщаме input към старото количество
+                    updateCart();
+                    return;
+                }
+            }
+            
+            let updated = false;
+            cart = cart.map(item => {
+                if (item.id === productId && item.flavour1 === flavour1 && item.flavour2 === flavour2) {
+                    updated = true;
+                    return { ...item, quantity: newQty };
+                }
+                return item;
+            });
+            
+            if (updated) {
+                saveCart();
+                updateCart();
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Количката е празна!');
+                return;
+            }
+
+            const name = document.getElementById('cust-name')?.value.trim() || 'Клиент';
+            const surname = document.getElementById('cust-surname')?.value.trim() || 'Без фамилия';
+            const email = document.getElementById('cust-email')?.value.trim() || 'no-email@placeholder.local';
+            const phone = document.getElementById('cust-phone')?.value.trim() || 'Не е посочен телефон';
+            let address = document.getElementById('cust-address')?.value.trim() || '';
+            const notes = document.getElementById('cust-notes')?.value.trim() || '';
+            const delivery = document.querySelector('input[name="delivery"]:checked')?.value || 'office';
+
+            const carrier = document.getElementById('delivery-carrier')?.value || 'spidi';
+            const officeSelect = document.getElementById('delivery-office');
+            let office = officeSelect?.value || '';
+
+            if (delivery === 'office' && !office && officeSelect) {
+                const firstOffice = officeSelect.querySelector('optgroup option');
+                if (firstOffice) {
+                    office = firstOffice.value;
+                    officeSelect.value = firstOffice.value;
+                }
+            }
+
+            if (delivery === 'address' && !address) {
+                address = 'Не е посочен адрес';
+            }
+
+            if (delivery === 'office' && !office) {
+                office = 'Не е избран офис';
+            }
+
+            if (delivery === 'office' && !address) {
+                address = office;
+            }
+
+            const itemsSubtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            const deliveryFeeBgn = getDeliveryFeeBgn(delivery);
+            const grandTotalBgn = itemsSubtotal + deliveryFeeBgn;
+
+            const customer = { name, surname, email, phone, address, notes, delivery, carrier, office, itemsSubtotalBgn, deliveryFeeBgn, grandTotalBgn };
+
+            // Essential order data for confirmation page
+            try {
+                localStorage.setItem('lastOrder', JSON.stringify(cart));
+                localStorage.setItem('lastCustomer', JSON.stringify(customer));
+                localStorage.setItem('lastOrderSummary', JSON.stringify({ itemsSubtotalBgn, deliveryFeeBgn, grandTotalBgn }));
+            } catch (error) {
+                console.error('Failed to persist order payload:', error);
+            }
+
+            // Non-critical history sync
+            try {
+                if (window.recordOrder) window.recordOrder(cart);
+            } catch (error) {
+                console.error('Failed to store order history:', error);
+            }
+
+            alert('Благодарим за поръчката! Ще се свържем с вас скоро.');
+            cart = [];
+            saveCart();
+            updateCart();
+            window.location.href = 'porachka.html';
+        }
+
+        window.checkout = checkout;
+
+        updateCart();
+
+        // Delivery / office selection helpers
+        const deliveryOffices = {
+            spidi: {
+                "София": [
+                    "Бул. България 69", "Цариградско шосе 38", "Пловдивско шосе 183" 
+                ],
+                "Пловдив": [
+                    "бул. Руски 122", "бул. 6-ти септември 305", "ул. Кукленско шосе 13"
+                ],
+                "Варна": [
+                    "бул. Вл. Варненчик 47", "ул. Хан Крум 10", "ул. 8-ми Приморски полк 78"
+                ],
+                "Бургас": [
+                    "ул. Цар Симеон 149", "бул. Стефан Стамболов 19", "ул. Георги Кирков 47"
+                ]
+            },
+            econt: {
+                "София": [
+                    "бул. Витоша 9", "ул. Стара планина 64", "бул. Яворов 23"
+                ],
+                "Пловдив": [
+                    "ул. Гладстон 41", "бул. България 102", "ул. Кукуш 7"
+                ],
+                "Варна": [
+                    "бул. Христо Ботев 128", "ул. Страцин 31", "бул. Цар Освободител 58"
+                ],
+                "Бургас": [
+                    "бул. Александровска 68", "ул. Оборище 55", "бул. Демокрация 17"
+                ]
+            }
+        };
+
+        function populateOfficeList() {
+            const carrier = document.getElementById('delivery-carrier')?.value;
+            const officeSelect = document.getElementById('delivery-office');
+            if (!carrier || !officeSelect) return;
+
+            const offices = deliveryOffices[carrier] || {};
+            officeSelect.innerHTML = '<option value="">(Изберете офис)</option>';
+
+            Object.entries(offices).forEach(([city, locations]) => {
+                const group = document.createElement('optgroup');
+                group.label = city;
+                locations.forEach(loc => {
+                    const opt = document.createElement('option');
+                    opt.value = `${city} - ${loc}`;
+                    opt.textContent = loc;
+                    group.appendChild(opt);
+                });
+                officeSelect.appendChild(group);
+            });
+
+            const firstOffice = officeSelect.querySelector('optgroup option');
+            if (firstOffice) {
+                officeSelect.value = firstOffice.value;
+            }
+        }
+
+        function updateDeliveryOptions() {
+            const selected = document.querySelector('input[name="delivery"]:checked')?.value;
+            const optionsContainer = document.getElementById('delivery-office-options');
+            const addressInput = document.getElementById('cust-address');
+            const officeSelect = document.getElementById('delivery-office');
+            if (!optionsContainer) return;
+            if (selected === 'office') {
+                optionsContainer.style.display = 'block';
+                if (addressInput) {
+                    addressInput.required = false;
+                    addressInput.placeholder = 'Адрес (не е нужен при взимане от офис)';
+                }
+                if (officeSelect) officeSelect.required = true;
+                populateOfficeList();
+            } else {
+                optionsContainer.style.display = 'none';
+                if (addressInput) {
+                    addressInput.required = true;
+                    addressInput.placeholder = 'Адрес (улица, номер, град)';
+                }
+                if (officeSelect) officeSelect.required = false;
+            }
+
+            updateCart();
+        }
+
+        // initialize delivery UI
+        updateDeliveryOptions();
+
+        // keep auth logic consistent with main page
+        function toggleAuth() {
+            const current = localStorage.getItem('currentUser');
+            if (current) {
+                if (confirm('Искате ли да излезете?')) {
+                    logoutUser();
+                }
+                return;
+            }
+            const modal = document.getElementById('auth-modal');
+            if (modal) modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('auth-title').textContent = 'Регистрация';
+        }
+        function showLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('auth-title').textContent = 'Вход';
+        }
+        function registerUser() {
+            const u = document.getElementById('reg-username').value;
+            const p = document.getElementById('reg-password').value;
+            if (!u || !p) { alert('Попълнете всички полета'); return; }
+            let users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[u]) { alert('Потребителят вече съществува'); return; }
+            users[u] = p;
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Регистрация успешна');
+            showLogin();
+        }
+        function loginUser() {
+            const u = document.getElementById('login-username').value;
+            const p = document.getElementById('login-password').value;
+            let users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[u] === p) {
+                localStorage.setItem('currentUser', u);
+                alert('Влязохте като ' + u);
+                toggleAuth();
+                updateUserDisplay();
+            } else {
+                alert('Невалидни данни');
+            }
+        }
+        function logoutUser() {
+            localStorage.removeItem('currentUser');
+            updateUserDisplay();
+        }
+        function updateUserDisplay() {
+            const nameEl = document.getElementById('user-name');
+            const u = localStorage.getItem('currentUser');
+            if (nameEl) {
+                nameEl.textContent = u ? u + ' ' : '';
+            }
+        }
+        updateUserDisplay();
+    </script>
+
+    <script src="auth-global.js"></script>
+    <script src="inventory-manager.js"></script>
+    <script src="checkout-failsafe.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поръчка - generation zef</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="new 1.html">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Преглед на продукти..." oninput="filterProducts()">
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-count">0</span>
+                🛒
+            </a>
+        </header>
+
+        <main class="products" style="padding: 40px;">
+            <div class="order-header" style="max-width: 960px; margin: 0 auto 40px; text-align: center;">
+                <h2>Поръчката е приета!</h2>
+                <p style="font-size: 16px; color: #444; margin: 10px 0 20px;">Благодарим ви! Вашата поръчка е получена и ще бъде обработена скоро.</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+                    <div style="background: #f5f5f5; padding: 16px 18px; border-radius: 12px; min-width: 220px;">
+                        <div style="font-size: 12px; color: #777;">Номер на поръчка</div>
+                        <div id="order-id" style="font-size: 20px; font-weight: 700; color: #d32f2f;">#000000</div>
+                    </div>
+                    <div style="background: #f5f5f5; padding: 16px 18px; border-radius: 12px; min-width: 220px;">
+                        <div style="font-size: 12px; color: #777;">Прогнозна доставка</div>
+                        <div id="order-delivery" style="font-size: 20px; font-weight: 700; color: #333;">2-4 работни дни</div>
+                    </div>
+                </div>
+                <p style="margin-top: 18px; color: #555;">Ще получите потвърждение по имейл (ако сте го оставили при поръчката). За въпроси: <a href="mailto:infogenerationzef@gmail.com">infogenerationzef@gmail.com</a> или ☎️ +359 88 450 9343.</p>
+
+                <div style="margin-top: 16px; padding: 18px; background: #fff; border-radius: 16px; box-shadow: 0 8px 18px rgba(0,0,0,0.05);">
+                    <h4 style="margin-bottom: 12px;">Вашите данни</h4>
+                    <p id="customer-name" style="margin: 6px 0;"></p>
+                    <p id="customer-email" style="margin: 6px 0;"></p>
+                    <p id="customer-phone" style="margin: 6px 0;"></p>
+                    <p id="customer-address" style="margin: 6px 0;"></p>
+                    <p id="customer-notes" style="margin: 6px 0; color: #555;"></p>
+                </div>
+            </div>
+
+            <div class="order-summary" style="max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+                <div>
+                    <h3 style="margin-bottom: 12px;">Включени артикули</h3>
+                    <div id="order-items" class="cart-items"></div>
+                </div>
+                <div class="cart-summary" style="padding: 24px; background: #fafafa; border-radius: 16px;">
+                    <h3 style="margin-top: 0;">Обобщение</h3>
+                    <div class="cart-total" style="margin: 18px 0 10px; font-size: 18px;"><strong>Артикули: <span id="order-items-subtotal" class="dual-price" data-bgn-price="0.00">0.00</span></strong></div>
+                    <div class="cart-total" style="margin: 10px 0; font-size: 18px;"><strong>Доставка: <span id="order-delivery-fee" class="dual-price" data-bgn-price="0.00">0.00</span></strong></div>
+                    <div class="cart-total" style="margin: 10px 0 18px; font-size: 18px;"><strong>Общо: <span id="order-total" class="dual-price" data-bgn-price="0.00">0.00</span></strong></div>
+                    <p style="color: #555; margin-bottom: 18px;">Можете да продължите да пазарувате или да разгледате нашите специални предложения.</p>
+                    <a href="new 1.html" class="cta-button" style="width: 100%;">Продължете към пазаруване</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script>
+        const EUR_RATE = 1.95583;
+        const DELIVERY_FEES_BGN = {
+            office: Number((4 * EUR_RATE).toFixed(2)),
+            address: Number((6 * EUR_RATE).toFixed(2))
+        };
+
+        function setSummaryPrice(elementId, amount) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            element.setAttribute('data-bgn-price', amount.toFixed(2));
+            element.textContent = amount.toFixed(2);
+        }
+
+        function formatOrderId(id) {
+            return '#' + id.toString().padStart(6, '0');
+        }
+
+        function renderCustomerDetails(customer) {
+            const nameEl = document.getElementById('customer-name');
+            const emailEl = document.getElementById('customer-email');
+            const phoneEl = document.getElementById('customer-phone');
+            const addressEl = document.getElementById('customer-address');
+            const notesEl = document.getElementById('customer-notes');
+
+            if (nameEl) nameEl.textContent = `Име: ${customer.name || ''} ${customer.surname || ''}`.trim();
+            if (emailEl) emailEl.textContent = `Имейл: ${customer.email || ''}`;
+            if (phoneEl) phoneEl.textContent = `Телефон: ${customer.phone || ''}`;
+            if (addressEl) addressEl.textContent = `Адрес: ${customer.address || ''}`;
+            if (notesEl) notesEl.textContent = customer.notes ? `Бележка: ${customer.notes}` : '';
+
+            const parent = addressEl ? addressEl.parentNode : null;
+            if (!parent) return;
+            parent.querySelectorAll('.delivery-detail').forEach(node => node.remove());
+
+            if (customer.delivery) {
+                const deliveryTypeEl = document.createElement('p');
+                deliveryTypeEl.className = 'delivery-detail';
+                deliveryTypeEl.style.margin = '6px 0';
+                deliveryTypeEl.textContent = `Доставка: ${customer.delivery === 'address' ? 'Доставка до адрес' : 'Взимане от офис'}`;
+                parent.insertBefore(deliveryTypeEl, addressEl.nextSibling);
+
+                const paymentEl = document.createElement('p');
+                paymentEl.className = 'delivery-detail';
+                paymentEl.style.margin = '6px 0';
+                paymentEl.textContent = `Плащане: ${customer.paymentMethod === 'card' ? 'С карта (онлайн)' : 'Наложен платеж (в брой)'}`;
+                parent.insertBefore(paymentEl, deliveryTypeEl.nextSibling);
+
+                if (customer.delivery === 'office' && customer.carrier && customer.office) {
+                    const carrierEl = document.createElement('p');
+                    carrierEl.className = 'delivery-detail';
+                    carrierEl.style.margin = '6px 0';
+                    carrierEl.textContent = `Куриер: ${customer.carrier === 'econt' ? 'Еконт' : 'Спиди'}`;
+
+                    const officeEl = document.createElement('p');
+                    officeEl.className = 'delivery-detail';
+                    officeEl.style.margin = '6px 0';
+                    officeEl.textContent = `Офис: ${customer.office}`;
+
+                    parent.insertBefore(carrierEl, deliveryTypeEl.nextSibling);
+                    parent.insertBefore(officeEl, carrierEl.nextSibling);
+                }
+            }
+        }
+
+        function renderOrder() {
+            const order = JSON.parse(localStorage.getItem('lastOrder') || '[]');
+            const customer = JSON.parse(localStorage.getItem('lastCustomer') || '{}');
+            const storedSummary = JSON.parse(localStorage.getItem('lastOrderSummary') || '{}');
+            const orderItemsContainer = document.getElementById('order-items');
+            const totalEl = document.getElementById('order-total');
+            const orderIdEl = document.getElementById('order-id');
+            const deliveryEl = document.getElementById('order-delivery');
+
+            if (!orderItemsContainer || !totalEl) return;
+
+            let orderId = localStorage.getItem('lastOrderId');
+            if (!orderId) {
+                orderId = Math.floor(100000 + Math.random() * 900000).toString();
+                localStorage.setItem('lastOrderId', orderId);
+            }
+            if (orderIdEl) orderIdEl.textContent = formatOrderId(orderId);
+
+            if (deliveryEl) {
+                const days = 2 + Math.floor(Math.random() * 3);
+                deliveryEl.textContent = `${days} работни дни`;
+            }
+
+            if (!order.length) {
+                orderItemsContainer.innerHTML = '<p>Няма записана поръчка. Можете да отидете в <a href="cart.html">количката</a> и да добавите продукти.</p>';
+                setSummaryPrice('order-items-subtotal', 0);
+                setSummaryPrice('order-delivery-fee', 0);
+                setSummaryPrice('order-total', 0);
+                return;
+            }
+
+            renderCustomerDetails(customer);
+
+            let itemsSubtotal = 0;
+            orderItemsContainer.innerHTML = '';
+
+            order.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                itemsSubtotal += itemTotal;
+
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <div class="cart-item-details">
+                        <span class="cart-item-name">${item.name}</span>
+                        ${item.flavour1 ? `<span class="cart-item-flavour">F1: ${item.flavour1}</span>` : ''}
+                        ${item.flavour2 ? `<span class="cart-item-flavour">F2: ${item.flavour2}</span>` : ''}
+                        <span class="cart-item-price">${item.price.toFixed(2)} лв x ${item.quantity}</span>
+                    </div>
+                    <div class="cart-item-total">${itemTotal.toFixed(2)} лв</div>
+                `;
+                orderItemsContainer.appendChild(itemEl);
+            });
+
+            const deliveryFeeBgn = Number(storedSummary.deliveryFeeBgn) || Number(customer.deliveryFeeBgn) || DELIVERY_FEES_BGN[customer.delivery || 'office'] || 0;
+            const grandTotalBgn = Number(storedSummary.grandTotalBgn) || Number(customer.grandTotalBgn) || (itemsSubtotal + deliveryFeeBgn);
+
+            setSummaryPrice('order-items-subtotal', itemsSubtotal);
+            setSummaryPrice('order-delivery-fee', deliveryFeeBgn);
+            setSummaryPrice('order-total', grandTotalBgn);
+        }
+
+        renderOrder();
+    </script>
+
+    <script src="dual-prices.js"></script>
+    <script src="auth-global.js"></script>
+</body>
+</html>

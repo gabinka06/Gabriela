@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Букет от лалета - Пепко</title>
+    <link rel="stylesheet" href="new 1.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%3Ctext%20y%3D%2714%27%20font-size%3D%2716%27%3E%F0%9F%8C%B8%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new 1.html" class="logo">🌹 generation zef</a>
+            <nav>
+                <ul>
+                    <li><a href="new 1.html">БУКЕТИ</a></li>
+                    <li><a href="за нас.html">ЗА НАС</a></li>
+                    <li><a href="contact.html">КОНТАКТ</a></li>
+                    <li><a href="info.html">ИНФО</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Преглед на продукти..." oninput="filterProducts()">
+            </div>
+            <div class="auth-icon" onclick="toggleAuth()">
+                <span id="user-name"></span> 👤
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <span class="cart-count">0</span>
+                🛒
+            </div>
+        </header>
+        <main class="products" style="text-align:center; padding:40px; position:relative; min-height:calc(100vh - 220px);">
+            <h1>За нас</h1>
+            <style>
+div.transp {width:1000px; height:430px; margin:30px 50px;
+background-color:#ffffff; opacity:0.6;
+filter:alpha(opacity=60); 
+}
+div.transp p { margin:30px 40px; font-weight:bold;
+color:#000000;}</style>
+<div class="background">
+<div class="transp">
+            <p>Добре дошли в нашия сладък свят!
+Ние вярваме, че най-красивите подаръци са тези, които носят едновременно радост за очите и наслада за сетивата. Нашата мисия е да превърнем традиционното сладкарство в изкуство, което можете да подарите под формата на нежен, ефирен букет.
+
+Кои сме ние?
+Ние сме малък екип от творци и любители на изисканите вкусове. За нас изработването на зефир не е просто процес, а магия. Всеки „цвят“ в нашите букети е ръчно шприцован и моделиран, за да пресъздаде нежността на истинско цвете, но с един много по-сладък финал.
+
+Защо нашите букети са специални?
+За разлика от обикновените букети, които увяхват, нашите оставят спомен, който се топи в устата. Ето какво влагаме във всеки един от тях:
+
+Натурален вкус: Използваме само истинско плодово пюре (ябълки, горски плодове, цитруси) и естествени желиращи съставки като пектин и агар-агар.
+
+Ръчна изработка: Всеки венчелистче е уникално. Влагаме часове труд и прецизност, за да постигнем реалистичен вид на рози, божури или лалета.
+
+Лекота и нежност: Нашият зефир е с ниско съдържание на мазнини и без излишни консерванти – леко изкушение, на което можете да се насладите без вина.
+
+Лично отношение: Създаваме всеки букет по поръчка, мислейки за човека, който ще го получи.
+
+Повече от подарък – емоция
+Независимо дали става въпрос за рожден ден, сватба, Свети Валентин или просто жест на благодарност, букетите от зефир казват „ти си специален“ по един неповторим начин.
+
+Благодарим ви, че ни позволявате да бъдем част от вашите най-красиви и сладки моменти!</p>
+</div>
+</div>
+            <div style="position:absolute; left:50%; bottom:20px; transform:translateX(-50%);">
+                <a href="new 1.html" class="cta-button" style="background:#777;">Назад към магазина</a>
+            </div>
+        </main>
+        <footer>
+            <p><strong>generation zef</strong> - Ваш избор за перфектния подарък</p>
+            <p>✉️ infogenerationzef@gmail.com | 📞 +359 88 450 9343</p>
+            <p>&copy; 2026 generation zef. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script src="auth-global.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENERATION ZEF | Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">GEN ZEF</div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header id="home" class="hero">
+            <div class="hero-container">
+                <h1>Handcrafted Art</h1>
+                <p>0% Fat | 100% Aesthetic</p>
+            </div>
+        </header>
+
+        <section id="about" class="section-padding">
+            <h2>Our Philosophy</h2>
+            <p>Ние вярваме, че десертът трябва да е лек и красив. Използваме натурални плодове и агар-агар.</p>
+        </section>
+
+        <section id="products" class="section-padding grey-bg">
+            <h2>Available Drops</h2>
+            
+            <div class="product-grid">
+                <div class="card">
+                    <div class="image-box">🌸</div>
+                    <h3>Z-Cloud</h3>
+                    <p class="price">45.00 BGN</p>
+                    <button class="cta">Order Now</button>
+                </div>
+                <div class="card">
+                    <div class="image-box">🌷</div>
+                    <h3>Aura Pink</h3>
+                    <p class="price">55.00 BGN</p>
+                    <button class="cta">Order Now</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>Contact us: @generation.zef</p>
+    </footer>
+
+</body>
+</html>
